@@ -1,24 +1,23 @@
 import streamlit as st
 import spacy
-import random
-import subprocess
-import sys
+import os
 
-# Function to install spaCy model
-def install_model():
-    try:
-        subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'en_core_web_sm'])
-        # Load spaCy model
-        nlp = spacy.load("en_core_web_sm")
-    except Exception as e:
-        print(f"An error occurred while installing the model: {e}")
+# Function to check and load spaCy model
+   def load_spacy_model():
+       try:
+           nlp = spacy.load("en_core_web_sm")
+           return nlp
+       except OSError:
+           print("Model not found. Please install the model.")
+           return None
 
-# Call the function to ensure the model is installed
-install_model()
-# Responses dictionary
+   nlp = load_spacy_model()
 
-# Load spaCy model
-nlp = spacy.load("en_core_web_sm")
+   if nlp is None:
+       # Handle the case where the model is not available
+       # You can set a default response or raise an error
+       raise RuntimeError("spaCy model 'en_core_web_sm' is not installed.")
+       
 responses = {
     ("course", "classes", "courses offered", "study", "learn", "training"): (
         "We offer several UI/UX design courses, including Fundamentals of UX, Advanced UI Design, and Prototyping.",
