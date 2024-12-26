@@ -3,7 +3,7 @@ import spacy
 import random
 
 # Load spaCy model
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_sm_abd")
 
 # Responses dictionary
 responses = {
