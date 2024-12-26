@@ -1,5 +1,8 @@
 import streamlit as st
 import spacy
+import random 
+
+
 nlp = spacy.load("en_core_web_sm")
 responses = {
     ("course", "classes", "courses offered", "study", "learn", "training"): (
