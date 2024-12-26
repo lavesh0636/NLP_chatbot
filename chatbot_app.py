@@ -14,6 +14,9 @@ def install_model():
 # Call the function to ensure the model is installed
 install_model()
 # Responses dictionary
+
+# Load spaCy model
+nlp = spacy.load("en_core_web_sm")
 responses = {
     ("course", "classes", "courses offered", "study", "learn", "training"): (
         "We offer several UI/UX design courses, including Fundamentals of UX, Advanced UI Design, and Prototyping.",
