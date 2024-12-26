@@ -1,10 +1,18 @@
 import streamlit as st
 import spacy
 import random
+import subprocess
+import sys
 
-# Load spaCy model
-nlp = spacy.load("en_core_web_sm_abd")
+# Function to install spaCy model
+def install_model():
+    try:
+        subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'en_core_web_sm'])
+    except Exception as e:
+        print(f"An error occurred while installing the model: {e}")
 
+# Call the function to ensure the model is installed
+install_model()
 # Responses dictionary
 responses = {
     ("course", "classes", "courses offered", "study", "learn", "training"): (
